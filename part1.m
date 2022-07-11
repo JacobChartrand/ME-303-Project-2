@@ -21,8 +21,9 @@ end
 
 %IC
 for i = 1:N+1
-%T0(i) = sin(pi*x(i));
-T0(i) = cos(x(i)-pi/2)
+%T0(i) = -(sin(pi*x(i))*temp_w);
+%T0(i) = -temp_w*sqrt(1-(x(i)-(R/2))^2)+temp_w;
+T0(i) = cos(x(i)*pi + pi/2) * 100
 end
 
 %Explicit PDE 

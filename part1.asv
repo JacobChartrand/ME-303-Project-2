@@ -3,14 +3,16 @@
 clear all
 close all
 clc
-k = 0.991; %thermal conductivity of egg white
+k = 0.00991; %thermal conductivity of egg white
 %k = 1;
 R = 1; %x in (0,R)
-T = 0.5; %t in (0,T)
+T = 50; %t in (0,T)
 N = 20; %Space resolution
 M = 5000; %Time resolution
 dx = R/N; dt = T/M; %Grid spacing
 alpha = k*dt/dx^2;
+temp_w = 100; %Water temperature
+temp_egg = 25; %Inital egg temperature
 
 %Node Position
 for i = 1:N+1
@@ -19,8 +21,9 @@ end
 
 %IC
 for i = 1:N+1
-%T0(i) = sin(pi*x(i));
-T0(i) = 100*cos(pi+x(i));
+T0(i) = -(sin(pi*x(i))*temp_w);
+%T0(i) = -temp_w*sqrt(1-(x(i)-(R/2))^2)+temp_w;
+%T0(i) = cos(x(i)-pi/2)
 end
 
 %Explicit PDE 
