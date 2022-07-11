@@ -5,13 +5,13 @@ close all
 clc
 
 %Assumptions
-k = 0.001; %Thermal conductivity
+k = 1; %Thermal conductivity
 L = 1;
 
 %Initilization
-T = 500; %t in (0,T)
-N = 50; %Space resolution
-M = 5000; %Time resolution
+T = 10; %t in (0,T)
+N = 20; %Space resolution
+M = 10000; %Time resolution
 dx = L/N; dt = T/M; %Grid spacing
 alpha = k*dt/dx^2;
 
@@ -40,18 +40,18 @@ end
 
 %% Plotting
 figure(1)
-plot(0:dx:L,Temp(round(0.001*T),:))
+plot(0:dx:L,Temp(round(0.001*(1/dt)),:))
 hold on
-plot(0:dx:L,Temp(round(0.01*T),:))
+plot(0:dx:L,Temp(round(0.01*(1/dt)),:))
 hold on
-plot(0:dx:L,Temp(round(0.1*T),:))
+plot(0:dx:L,Temp(round(0.1*(1/dt)),:))
 hold on
-plot(0:dx:L,Temp(round(10*T),:))
+plot(0:dx:L,Temp(round(10*(1/dt)),:))
 hold on
 legend('t=0.001','t=0.01','t=0.1','t=10','Location','northwest')
 
 figure(2)
-for i = 1:5:T
+for i = 1:1:M
 plot(0:dx:L,Temp(i,:))
 title('Temperature vs Location at Varying Times')
 xlabel('L (unitless)')
