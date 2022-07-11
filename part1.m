@@ -25,7 +25,9 @@ end
 
 %IC
 for i = 1:N+1
-T0(i) = abs(((temp_w - temp_egg)/R)*(x(i)-R)) + temp_egg;
+%T0(i) = abs(((temp_w - temp_egg)/R)*(x(i)-R)) + temp_egg; I think this is
+                                                           %wrong
+T0(i) = temp_egg;
 end
 
 %Explicit method PDE solving 
