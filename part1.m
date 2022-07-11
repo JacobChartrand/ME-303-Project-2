@@ -12,7 +12,7 @@ temp_w = 100; %Water temperature
 temp_egg = 12; %Inital egg temperature
 
 %Initilization
-T = 900; %t in (0,T)
+T = 2000; %t in (0,T)
 N = 20; %Space resolution
 M = 5000; %Time resolution
 dx = D/N; dt = T/M; %Grid spacing
@@ -46,13 +46,16 @@ end
 midpoint = round(N/2); %Midpoint of space resolution
 
 finish_temp = find(Temp(:,midpoint)>80); %Vector containing indices where
-                                    %midpoint is above 80C
+                                         %midpoint is above 80C
 
 finish_time = ((finish_temp(1)/M)*T)+10 %Calculates done time
 
 %% Plotting
 [X,Y] = meshgrid(0:dx:D,dt:dt:T);
 mesh(X,Y,Temp); colormap('hot');
+xlim([0 D])
+ylim([0 (finish_time+100)])
+zlim([0 100])
 title('Chicken Egg Cooking Plot')
 xlabel('x (cm)')
 ylabel('t (s)')
