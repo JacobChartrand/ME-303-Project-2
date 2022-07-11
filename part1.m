@@ -6,14 +6,14 @@ clc
 
 %Assumptions
 k = 0.009911; %Average thermal conductivity of egg, W/(C^-1*cm^-1)
-D = 5.25; %Egg diameter as average of egg width and height, cm
+D = 14.2; %Egg diameter as average of egg width and height, cm
 R = D/2; %x in (0,R), cm
 temp_w = 100; %Water temperature
 temp_egg = 12; %Inital egg temperature
 
 %Initilization
-T = 2000; %t in (0,T)
-N = 20; %Space resolution
+T = 5000; %t in (0,T)
+N = 50; %Space resolution
 M = 5000; %Time resolution
 dx = D/N; dt = T/M; %Grid spacing
 alpha = k*dt/dx^2;
@@ -25,8 +25,6 @@ end
 
 %IC
 for i = 1:N+1
-%T0(i) = abs(((temp_w - temp_egg)/R)*(x(i)-R)) + temp_egg; I think this is
-                                                           %wrong
 T0(i) = temp_egg;
 end
 
@@ -56,9 +54,9 @@ finish_time = ((finish_temp(1)/M)*T)+10 %Calculates done time
 [X,Y] = meshgrid(0:dx:D,dt:dt:T);
 mesh(X,Y,Temp); colormap('hot');
 xlim([0 D])
-ylim([0 (finish_time+100)])
+ylim([0 (finish_time+300)])
 zlim([0 100])
-title('Chicken Egg Cooking Plot')
+title('Ostrich Egg Cooking Plot')
 xlabel('x (cm)')
 ylabel('t (s)')
 zlabel('Temperature (C)')
