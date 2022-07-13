@@ -5,7 +5,6 @@ close all
 clc
 
 %Assumptions
-k = 1; %Thermal conductivity
 L = 1;
 
 %Initilization
@@ -13,7 +12,7 @@ T = 10; %t in (0,T)
 N = 20; %Space resolution
 M = 10000; %Time resolution
 dx = L/N; dt = T/M; %Grid spacing
-alpha = k*dt/dx^2;
+alpha = dt/dx^2;
 
 %Node Position
 for i = 1:N+1
